@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+    --lora-font: "Lora", serif;
+    --source-font: "Source Sans 3", sans-serif;
+    --white: #FFFFFF;
+    --gray-one: #BFBFBD;
+    --gray-two: #8C8B88;
+    --brown: #595147;
+    --black: #0D0000;
+}
+
+#root{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./assets/bg.svg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
