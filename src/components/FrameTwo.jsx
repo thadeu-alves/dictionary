@@ -1,30 +1,50 @@
 import { Content } from "./styles"
+import { useState } from "react"
 
 export function FrameTwo(){
+    const [results, setResults] = useState([])
+    const [word, setWord] = useState()
+
+    //const { data } = useFetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+
+
+    async function search(){
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+        const data = await response.json()
+        setResults(data)
+        console.log(results)
+        let rct = document.getElementById("rct")
+        rct.innerHTML += `
+            <li>${word}</li>
+        `;
+        if(rct.children.length > 10){
+            rct.innerHTML = `<li>${word}</li>`
+        }
+    }
+
     return(
         <Content>
             <div className="left">
                 <h1>Recents</h1>
-                <ul>
-                    <li>asas</li>
-                    <li>asasas</li>
-                    <li>asas</li>
-                    <li>asasas</li>
-                </ul>
+                <ul id="rct"></ul>
             </div>
             <div className="right">
                 <div className="card">
                     <div className="search">
-                        <input type="text"/>
-                        <button type="submit">search</button>
+                        <input
+                        type="text"
+                        id="toSearch"
+                        value={word}
+                        onChange={e => setWord(e.target.value)}/>
+                        <button id="btn" onClick={search}>search</button>
                     </div>
 
-                    <h1>shine</h1>
-                    <h2>verb</h2>
+                    <h1 className="name">{results[0]?.word || results?.title || "Example"}</h1>
+                    <h2 className="phonetic">{results[0]?.phonetic || "ex"}</h2>
 
-                    <p>(of the sun or another source of the light) give out a bright light.</p>
+                    <p className="definition">{results[0]?.meanings[0].definitions[0].definition || results?.message ||"example"}</p>
 
-                    <span>the sun shone through of the window</span>
+                    <span className="example">{results[0]?.meanings[0].synonyms[0] || results?.resolution || "No synonyms"}</span>
                 </div>
             </div>
         </Content>
