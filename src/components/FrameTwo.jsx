@@ -4,6 +4,7 @@ import { useState } from "react"
 export function FrameTwo(){
     const [results, setResults] = useState([])
     const [word, setWord] = useState()
+    const [recent, setRecent] = useState([])
 
     //const { data } = useFetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
 
@@ -13,21 +14,34 @@ export function FrameTwo(){
         const data = await response.json()
         setResults(data)
         console.log(results)
-        let rct = document.getElementById("rct")
+        /*let rct = document.getElementById("rct")
         rct.innerHTML += `
             <li>${word}</li>
         `;
         if(rct.children.length > 10){
             rct.innerHTML = `<li>${word}</li>`
-        }
+        }*/
+        setRecent([...recent, word])
+        console.log(recent)
     }
 
     return(
         <Content>
-            <div className="left">
+            {/*<div className="left">
                 <h1>Recents</h1>
-                <ul id="rct"></ul>
-            </div>
+                <ul id="rct">{recent.map(e => {
+                    return(
+                        <>
+                        <li onClick={() => {
+                            setWord(e)
+                            console.log(word)
+                            search()
+                            document.getElementById("toSearch").value = e
+                        }}>{e}</li>
+                        </>
+                    )
+                })}</ul>
+            </div>*/}
             <div className="right">
                 <div className="card">
                     <div className="search">
@@ -35,7 +49,9 @@ export function FrameTwo(){
                         type="text"
                         id="toSearch"
                         value={word}
-                        onChange={e => setWord(e.target.value)}/>
+                        onChange={e => {
+                            setWord(e.target.value)
+                        }}/>
                         <button id="btn" onClick={search}>search</button>
                     </div>
 

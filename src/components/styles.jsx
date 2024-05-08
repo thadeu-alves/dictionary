@@ -63,6 +63,7 @@ export const Content = styled.section`
         align-items: center;
         text-align: center;
         border-right: .2rem solid var(--black);
+        display: none;
     }
 
     .left h1{
@@ -82,7 +83,8 @@ export const Content = styled.section`
     }
 
     .right{
-        width: 80%;
+        //width: 80%;
+        width: 100%;
         height: 100%;
         background-color: var(--gray-two);
         position: absolute;
@@ -93,6 +95,7 @@ export const Content = styled.section`
     }
 
     .right .card{
+        max-width: 80vw;
         background-color: var(--white);
         padding: 6rem;
         border-radius: 4rem;
@@ -132,6 +135,7 @@ export const Content = styled.section`
         -moz-border-radius: 1.2rem;
         -ms-border-radius: 1.2rem;
         -o-border-radius: 1.2rem;
+        cursor: pointer;
     }
 
     .right h1{
