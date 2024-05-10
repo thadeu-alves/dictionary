@@ -1,5 +1,6 @@
 import { Content } from "./styles"
 import { useState } from "react"
+import Recent from "./Recent"
 
 export function FrameTwo(){
     const [results, setResults] = useState([])
@@ -14,34 +15,25 @@ export function FrameTwo(){
         const data = await response.json()
         setResults(data)
         console.log(results)
-        /*let rct = document.getElementById("rct")
-        rct.innerHTML += `
-            <li>${word}</li>
-        `;
-        if(rct.children.length > 10){
-            rct.innerHTML = `<li>${word}</li>`
-        }*/
-        setRecent([...recent, word])
-        console.log(recent)
+        setRecent([...recent, {
+            word,
+        }])
     }
 
     return(
         <Content>
-            {/*<div className="left">
+            <div className="left">
                 <h1>Recents</h1>
                 <ul id="rct">{recent.map(e => {
                     return(
                         <>
-                        <li onClick={() => {
-                            setWord(e)
-                            console.log(word)
-                            search()
-                            document.getElementById("toSearch").value = e
-                        }}>{e}</li>
+                        <Recent
+                            word={e?.word}
+                        />
                         </>
                     )
                 })}</ul>
-            </div>*/}
+            </div>
             <div className="right">
                 <div className="card">
                     <div className="search">

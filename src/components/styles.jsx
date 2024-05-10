@@ -49,7 +49,7 @@ export const Content = styled.section`
     width: 100%;
     height: 100%;
     position: relative;
-    
+
 
     .left{
         width: 20%;
@@ -59,11 +59,10 @@ export const Content = styled.section`
         left: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        //justify-content: center;
         align-items: center;
         text-align: center;
         border-right: .2rem solid var(--black);
-        display: none;
     }
 
     .left h1{
@@ -72,19 +71,30 @@ export const Content = styled.section`
         font-size: 4rem;
         color: var(--black);
         margin-bottom: 4.4rem;
+        margin-top: 10px;
     }
 
     .left li{
         font-family: var(--source-font);
         font-weight: normal;
-        font-size: 4rem;
+        font-size: 3rem;
         list-style: none;
         color: var(--gray-one);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .left li:hover{
+        background-color: var(--gray-one);
+        color: var(--white);
+        cursor: pointer;
+        padding: 2px 10px;
     }
 
     .right{
-        //width: 80%;
-        width: 100%;
+        width: 80%;
         height: 100%;
         background-color: var(--gray-two);
         position: absolute;
